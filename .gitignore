@@ -1,3 +1,11 @@
 *.exe
 *.out
 
+# Ignore all compiled Java class files
+*.class
+
+# Ignore VS Code project metadata
+.settings/
+.project
+.classpath
+.factorypath
