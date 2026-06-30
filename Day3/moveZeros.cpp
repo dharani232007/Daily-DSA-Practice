@@ -1,41 +1,31 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
-#include<vector>
 
-int main(){
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+void moveZeroes(vector<int>& nums) {
+    int insertPos = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] != 0) {
+            swap(nums[insertPos], nums[i]);
+            insertPos++;
+        }
+    }
+}
+
+int main() {
     int n;
-    cout<<"Enter the size of the array: ";
-    cin>>n;
+    cout << "Enter array size: "; cin >> n;
+    vector<int> nums(n);
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) cin >> nums[i];
 
-    int arr[n];
-    cout<<"Enter the array element: ";
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-
-    int c0 = 0;
-    vector<int>ans;
-    for(int i=0;i<n;i++){
-        if(arr[i] == 0){
-            c0++;
-        }
-        else{
-            ans.push_back(arr[i]);
-        }
-    }
-    
-    for(int i=0;i<c0;i++){
-        ans.push_back(0);
-    }
-     
-    cout<<"Move all Zeros to end: ";
-    for(int i=0 ; i<n ;i++){
-        cout<<ans[i]<<" ";
-    }
-
-    //Time complexity - O(N^3)
-    //Space complexity - O(N)
-
-
-
+    moveZeroes(nums);
+    cout << "Array after moving zeroes: ";
+    for (int val : nums) cout << val << " ";
+    cout << endl;
+    return 0;
 }

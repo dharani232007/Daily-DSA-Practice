@@ -1,31 +1,33 @@
 #include <iostream>
-#include<vector>
+#include <vector>
+
 using namespace std;
 
-int main() {
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+int removeDuplicates(vector<int>& nums) {
+    if (nums.empty()) return 0;
     
-    int n;
-    cout<<"Enter the array size: ";
-    cin>>n;
-
-    vector<int>arr(n);
-    cout<<"Enter the array in sort format: ";
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    int i=0;
-    for(int j=1;j<n;j++){
-        if(arr[j] != arr[i]){
-            i++;
-            arr[i] = arr[j];
+    int uniqueIdx = 0;
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] != nums[uniqueIdx]) {
+            uniqueIdx++;
+            nums[uniqueIdx] = nums[i];
         }
     }
-    
-    cout<<"Original Array to remove the Duplicate: ";
-    for(int k=0 ; k<i+1 ; k++){
-        cout<<arr[k]<<" ";
-    }
-    
+    return uniqueIdx + 1;
+}
 
-    
+int main() {
+    int n;
+    cout << "Enter sorted array size: "; cin >> n;
+    vector<int> nums(n);
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) cin >> nums[i];
+
+    int k = removeDuplicates(nums);
+    cout << "Unique element count: " << k << "\nModified array: ";
+    for (int i = 0; i < k; i++) cout << nums[i] << " ";
+    cout << endl;
+    return 0;
 }

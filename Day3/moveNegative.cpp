@@ -1,71 +1,41 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
-#include<vector>
-#include<utility>
 
-int main(){
+// Time Complexity: O(N)
+// Space Complexity: O(1) (In-place partition)
+void moveNegatives(vector<int>& arr) {
+    int left = 0;
+    int right = arr.size() - 1;
 
-    //Brutforce approach
+    while (left <= right) {
+        if (arr[left] < 0 && arr[right] < 0) {
+            left++;
+        } else if (arr[left] >= 0 && arr[right] < 0) {
+            swap(arr[left], arr[right]);
+            left++;
+            right--;
+        } else if (arr[left] >= 0 && arr[right] >= 0) {
+            right--;
+        } else {
+            left++;
+            right--;
+        }
+    }
+}
 
+int main() {
     int n;
-    cout<<"Enter the size of the array: ";
-    cin>>n;
+    cout << "Enter array size: "; cin >> n;
+    vector<int> arr(n);
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) cin >> arr[i];
 
-    int arr[n];
-    cout<<"Enter the array element(postive and negative): ";
-    for(int i=0;i<n ; i++){
-        cin>>arr[i];
-    }
-
-    vector<int>pos;
-    vector<int>neg;
-    for(int i = 0 ; i<n ; i++){
-        if(arr[i]<0){
-            neg.push_back(arr[i]);
-        }
-        else{
-           pos.push_back(arr[i]);
-        }
-        
-    }
-
-    for(int i=0;i<neg.size(); i++){
-        pos.push_back(neg[i]);
-    }
-
-    cout<<"Move the negative element in end of the array: ";
-    for(int i=0 ; i<n ; i++){
-        cout<<pos[i]<<" ";
-    }
-
-    //Time complexity: O(N^3)
-    //Space complexity: O(N)
-
-    //optimize code
-
-    int start = 0;
-    int end = n-1;
-
-    while(start<end){
-        if(arr[start]>0){
-            start++;
-        }
-        else if(arr[end]<0){
-            end--;
-        }
-        else{
-            // int temp = arr[start];
-            // arr[start] = arr[end];
-            // arr[end] = temp;
-            swap(arr[start], arr[end]);
-        }
-    }
-    cout<<"Move the negative element in end of the array: ";
-    for(int i=0 ; i<n ; i++){
-        cout<<arr[i]<<" ";
-    }
-
-    //Time complexity: O(N^2);
-    //space complexityL O(1);
-
+    moveNegatives(arr);
+    cout << "Array after moving negatives: ";
+    for (int val : arr) cout << val << " ";
+    cout << endl;
+    return 0;
 }
