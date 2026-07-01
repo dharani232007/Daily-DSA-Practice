@@ -1,11 +1,10 @@
 package Stack.Day13;
 
-public class stockSpan {
-
-    import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Stack;
 
-class Solution {
+public class stockSpan {
+
     public ArrayList<Integer> calculateSpan(int[] arr) {
      
      int n= arr.length;

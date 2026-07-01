@@ -8,19 +8,19 @@ public class stack {
     public static void main(String[] args) {
 
         Stack<Character>charSt = new Stack<>();
-        Stack<Double>doubleSt = new Stack<>();
-        Stack<String>strStack = new Stack<>();
-        Stack<Boolean>boolSt = new Stack<>();
+        // Stack<Double>doubleSt = new Stack<>();
+        // Stack<String>strStack = new Stack<>();
+        // Stack<Boolean>boolSt = new Stack<>();
 
 
         charSt.push('A');
         charSt.push('B');
 
-        doubleSt.push(1000);
+        // doubleSt.push(1000);
         
-        strStack.push("Dharani");
+        // strStack.push("Dharani");
 
-        boolSt.push(true);
+        // boolSt.push(true);
         
         Stack<Integer> st = new Stack<>();
 
